@@ -19,4 +19,6 @@ $ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch
 
 $ yum install figlet
 
+![](images/ninja3_1.jpg)
+
 
