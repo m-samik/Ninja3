@@ -15,7 +15,7 @@ $ source .venv/bin/activate
 ## Install Figlet Package in your RedHat/Centos OS
 figlet is in Fedora/EPEL, so you really don't want to get it from anywhere else.
 
-$ rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+$ yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
 $ yum install figlet
 
