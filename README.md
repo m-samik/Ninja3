@@ -1,5 +1,7 @@
 # Ninja3
-Open Source Python Software that will be used to integrate Docker, AWS Cloud, Linux, Ansible, BigData Hadoop, etcvim 
+Open Source Python Software that will be used to integrate Docker, AWS Cloud, Linux, Ansible, BigData Hadoop, etc
+
+![](images/ninja3.jpg)
 
 ## To run this Python Program as a command in Linux
 $ vim ~/.bashrc 
