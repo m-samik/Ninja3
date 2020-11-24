@@ -8,7 +8,7 @@ alias ninja3='python3 app.py'
 
 $ exec bash 
 
-![](images/ninja3.jpg)
+![](images/ninja3_0.jpg)
 
 ## Create a new environment
 $ python3 -m venv .venv
