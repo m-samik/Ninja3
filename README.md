@@ -22,3 +22,6 @@ $ yum install figlet
 ![](images/ninja3_1.jpg)
 
 
+## Install Python3 Requirements
+$ pip install --upgrade pip
+$ pip install -r requirements.txt
