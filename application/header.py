@@ -1,11 +1,13 @@
 import os
 import subprocess
+import pyfiglet 
+
 # header 
 def header():
-    msg = "Ninja3"
     os.system("tput setaf 3")
-    print(subprocess.getoutput(["figlet {}".format(msg)]), end=" ")
-    print("V1.0.0")
+    result = pyfiglet.figlet_format("Ninja3") 
+    print(result, end="V1.0.0")
+    #print("V1.0.0")
     print("\n")
 
     os.system("tput setaf 6")
