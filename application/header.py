@@ -1,6 +1,9 @@
-import os
-import subprocess
-import pyfiglet 
+try:
+    import os
+    import subprocess
+    import pyfiglet 
+except Exception as e:
+    print("Some modules are missing {}".format(e))
 
 # header 
 def header():

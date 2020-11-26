@@ -1,5 +1,8 @@
-import os
-import pyfiglet 
+try:
+    import os
+    import pyfiglet 
+except Exception as e:
+    print("Some modules are missing {}".format(e))
 
 def docker_menu():
     os.system("clear")
@@ -44,7 +47,7 @@ def docker_menu():
     
     try:
         if val == 0:
-            return 
+            exit()
         elif val == 1:
             print(os.system("docker --version"))
         elif val == 2:
@@ -60,6 +63,8 @@ def docker_menu():
         elif val == 6:
             # not done yet
             print("under process")
+        elif val == 7:
+            return
         
         input("\nContinue...")
         docker_menu()
