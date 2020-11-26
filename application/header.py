@@ -4,10 +4,11 @@ import pyfiglet
 
 # header 
 def header():
+    os.system("clear")
     os.system("tput setaf 3")
     result = pyfiglet.figlet_format("Ninja3") 
     print(result, end="V1.0.0")
-    #print("V1.0.0")
+  
     print("\n")
 
     os.system("tput setaf 6")
@@ -37,8 +38,4 @@ def header():
 
     print("\n")
     os.system("tput setaf 7")
-
-    option = int(input(" Select your Option >> "))
-    return option
-
 
