@@ -7,7 +7,7 @@ try :
     #from aws.aws_script import 
     #from ansible.ansible_script import 
     #from hadoop.hadoop_script import 
-    #from linux.linux_script import 
+    from linux.linux_script import linux_menu
     import os
 except Exception as e:
     print("Some modules are missing {}".format(e))
@@ -23,6 +23,8 @@ def main_menu():
                 exit()
             elif option == 1:
                 docker_menu()
+            elif option == 3:
+                linux_menu()
             elif (option > 1 and option <= 5):
                 print("option under progress...")
             else:
