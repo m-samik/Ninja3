@@ -3,9 +3,9 @@
 # importing files
 try :
     from application.header import header
-    from docker.docker_script import docker_menu,launch_con
+    from docker.docker_script import docker_menu
     #from aws.aws_script import 
-    #from ansible.ansible_script import 
+    from d_ansible.ansible_script import ansible_menu
     #from hadoop.hadoop_script import 
     from linux.linux_script import linux_menu
     import os
@@ -25,6 +25,8 @@ def main_menu():
                 docker_menu()
             elif option == 3:
                 linux_menu()
+            elif option == 5:
+                ansible_menu()
             elif (option > 1 and option <= 5):
                 print("option under progress...")
             else:
