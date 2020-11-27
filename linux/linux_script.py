@@ -1,3 +1,4 @@
+import os
 def selinux():
     try:
         import subprocess
@@ -24,6 +25,11 @@ def selinux():
         selinux()
     return
 
+
+def firewall():
+    print(os.system("systemctl status firewalld"))
+    return
+
 def linux_menu():
     try:
         import os
@@ -48,8 +54,8 @@ def linux_menu():
         os.system("tput setaf 2")
         print("\t[ 1 ]", end="   ")
         print ("SeLinux")
-        # print("\t[ 2 ]", end="   ")
-        # print ("Launch a Container")
+        print("\t[ 2 ]", end="   ")
+        print ("Firewall Status")
         # print("\t[ 3 ]", end="   ")
         # print ("Running Containers")
         # print("\t[ 4 ]", end="   ")
@@ -85,8 +91,8 @@ def linux_menu():
                 exit()
             elif val == 1:
                 selinux()
-            # elif val == 2:
-            #     launch_con()
+            elif val == 2:
+                firewall()
             # elif val == 3:
             #     print(os.system("docker ps"))
             # elif val == 4:
