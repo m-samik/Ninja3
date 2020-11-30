@@ -34,8 +34,8 @@ def ansible_menu():
     print ("Add New Hosts")
     print("\t[ 3 ]", end="   ")
     print ("Run Ansible to Configure Web Server on Available Hosts")
-    print("\t[ 4 ]", end="   ")
-    print ("Set New Host")
+    #print("\t[ 4 ]", end="   ")
+    #print ("Set New Host")
         # print("\t[ 5 ]", end="   ")
         # print ("Start/Stop a Container")
         # print("\t[ 6 ]", end="   ")
@@ -67,12 +67,11 @@ def ansible_menu():
                 username=input("Enter the Username : ")
                 password=getpass.getpass("Enter Your PAssword : ")
                 with open("/root/ansible/inventory.txt","a") as f:
-                    f.write("{} ansible_user={} ansible_ssh_pass={} ansible_connection=ssh".format(ip,username,password))
-                print(os.system("vim /root/ansible/inventory.txt"))
+                    f.write("\n{} ansible_user={} ansible_ssh_pass={} ansible_connection=ssh".format(ip,username,password))
             elif val == 3:
                 print(os.system("ansible-playbook d_ansible/ansible_playbooks/myplay.yml"))
             elif val == 4:
-                print("")
+                print("Hello")
             # elif val == 5:
             #     # not done yet
             #     print("under process")
