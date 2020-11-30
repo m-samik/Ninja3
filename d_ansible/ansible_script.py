@@ -28,11 +28,11 @@ def ansible_menu():
     # Ansible Menu
     os.system("tput setaf 2")
     print("\t[ 1 ]", end="   ")
-    print ("Check Ansible Configuration File")
+    print ("List Available Hosts")
     print("\t[ 2 ]", end="   ")
-    print ("List Hosts")
+    print ("Add / Remove Hosts")
     print("\t[ 3 ]", end="   ")
-    print ("Run Webserver Playbook")
+    print ("Run Ansible to Configure Web Server on Available Hosts")
         # print("\t[ 4 ]", end="   ")
         # print ("All Containers (running/stopped)")
         # print("\t[ 5 ]", end="   ")
@@ -59,9 +59,9 @@ def ansible_menu():
             if val == 0:
                 exit()
             elif val == 1:
-                print(os.system("cat /etc/ansible/ansible.cfg"))
-            elif val == 2:
                 print(os.system("ansible all --list-hosts"))
+            elif val == 2:
+                print(os.system("vim /root/ansible/inventory.txt"))
             elif val == 3:
                 print(os.system("ansible-playbook d_ansible/ansible_playbooks/myplay.yml"))
             # elif val == 4:
@@ -83,7 +83,7 @@ def ansible_menu():
             else:
                 print("Wrong Option")
             
-            input("\nContinue...")
+            input("\nPress Enter to Continue...")
             
         except Exception as e:
             print("Some exception occured: {}".format(e))
