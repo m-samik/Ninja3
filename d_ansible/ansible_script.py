@@ -2,6 +2,7 @@ try:
     import subprocess
     import os
     import pyfiglet
+    import getpass
 except Exception as e:
     print("Some modules are missing {}".format(e))
     input("Close Program >>>")
@@ -30,11 +31,11 @@ def ansible_menu():
     print("\t[ 1 ]", end="   ")
     print ("List Available Hosts")
     print("\t[ 2 ]", end="   ")
-    print ("Add / Remove Hosts")
+    print ("Add New Hosts")
     print("\t[ 3 ]", end="   ")
     print ("Run Ansible to Configure Web Server on Available Hosts")
-        # print("\t[ 4 ]", end="   ")
-        # print ("All Containers (running/stopped)")
+    #print("\t[ 4 ]", end="   ")
+    #print ("Set New Host")
         # print("\t[ 5 ]", end="   ")
         # print ("Start/Stop a Container")
         # print("\t[ 6 ]", end="   ")
@@ -61,11 +62,16 @@ def ansible_menu():
             elif val == 1:
                 print(os.system("ansible all --list-hosts"))
             elif val == 2:
-                print(os.system("vim /root/ansible/inventory.txt"))
+                print("Enter the Details Below  : ")
+                ip=input("Enter the O.s Ip : ")
+                username=input("Enter the Username : ")
+                password=getpass.getpass("Enter Your PAssword : ")
+                with open("/root/ansible/inventory.txt","a") as f:
+                    f.write("\n{} ansible_user={} ansible_ssh_pass={} ansible_connection=ssh".format(ip,username,password))
             elif val == 3:
                 print(os.system("ansible-playbook d_ansible/ansible_playbooks/myplay.yml"))
-            # elif val == 4:
-            #     print(os.system("docker ps -a"))
+            elif val == 4:
+                print("Hello")
             # elif val == 5:
             #     # not done yet
             #     print("under process")
