@@ -1,5 +1,5 @@
 try:
-    import subprocess
+    import subprocess as sp
     import os
     import pyfiglet
     import getpass
@@ -60,7 +60,7 @@ def ansible_menu():
             if val == 0:
                 exit()
             elif val == 1:
-                print(os.system("ansible all --list-hosts"))
+                print(sp.getoutput("ansible all --list-hosts"))
             elif val == 2:
                 print("Enter the Details Below  : ")
                 ip=input("Enter the O.s Ip : ")
@@ -69,7 +69,7 @@ def ansible_menu():
                 with open("/root/ansible/inventory.txt","a") as f:
                     f.write("\n{} ansible_user={} ansible_ssh_pass={} ansible_connection=ssh".format(ip,username,password))
             elif val == 3:
-                print(os.system("ansible-playbook d_ansible/ansible_playbooks/myplay.yml"))
+                print(sp.getoutput("ansible-playbook d_ansible/ansible_playbooks/myplay.yml"))
             elif val == 4:
                 print("Hello")
             # elif val == 5:
@@ -83,7 +83,7 @@ def ansible_menu():
             #     print("under process")
             # elif val == 8:
             #     cmd = "docker rm -f $(docker ps -aq)"
-            #     print(os.system(cmd))
+            #     print(sp.getoutput(cmd))
             elif val == 9:
                 return
             else:

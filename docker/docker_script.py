@@ -1,6 +1,12 @@
+try :
+    import os   
+    import pyfiglet 
+    import subprocess as sp
+except Exception as e:
+    print("Some modules are missing {}".format(e))
+
 def launch_con():
     try:
-        import os
         print("Enter the following specs: ")
         name = input("Contanier Name: ")
 
@@ -26,7 +32,7 @@ def launch_con():
         else:
             cmd = "docker run -dit --name {}  {}:{} ".format(name,image,ver)
         
-        print(os.system(cmd))
+        print(sp.getoutput(cmd))
         return 
     
     except Exception as e:
@@ -36,9 +42,6 @@ def launch_con():
 
 def docker_menu():
     try:
-        import os
-        import pyfiglet 
-
         os.system("clear")
         os.system("tput setaf 3")
         result = pyfiglet.figlet_format("Ninja3 Docker") 
@@ -82,7 +85,7 @@ def docker_menu():
         os.system("tput setaf 7")
 
     except Exception as e:
-        print("Some modules are missing {}".format(e))
+        print("Some exception occured: {}".format(e))
         input("Close Program >>>")
         os.system("reset")
         exit()
@@ -94,13 +97,13 @@ def docker_menu():
             if val == 0:
                 exit()
             elif val == 1:
-                print(os.system("docker --version"))
+                print(sp.getoutput("docker --version"))
             elif val == 2:
                 launch_con()
             elif val == 3:
-                print(os.system("docker ps"))
+                print(sp.getoutput("docker ps"))
             elif val == 4:
-                print(os.system("docker ps -a"))
+                print(sp.getoutput("docker ps -a"))
             elif val == 5:
                 # not done yet
                 print("under process")
@@ -112,7 +115,7 @@ def docker_menu():
                 print("under process")
             elif val == 8:
                 cmd = "docker rm -f $(docker ps -aq)"
-                print(os.system(cmd))
+                print(sp.getoutput(cmd))
             elif val == 9:
                 return
             else:

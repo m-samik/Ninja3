@@ -9,6 +9,7 @@ try :
     #from hadoop.hadoop_script import 
     from linux.linux_script import linux_menu
     import os
+    import subprocess as sp
 except Exception as e:
     print("Some modules are missing {}".format(e))
 
@@ -37,11 +38,3 @@ def main_menu():
 
 # call main menu    
 main_menu()
-
-    
-
-
-
-
-# status of docker
-#status_docker()

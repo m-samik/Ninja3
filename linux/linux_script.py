@@ -1,25 +1,25 @@
-import os
-def selinux():
-    try:
-        import subprocess
+try:
+        import subprocess as sp
         import os
-    except Exception as e:
+        import pyfiglet
+except Exception as e:
         print("Some modules are missing {}".format(e))
 
+def selinux():
     print("Status of SELinux: ", end="")
-    status = subprocess.getoutput("getenforce")
+    status = sp.getoutput("getenforce")
     if status == "Permissive":
         print("SELinux is Disabled")
     elif status == "Enforcing":
         print("SELinux is Enabled")
-    
+    print("----------------------------------------------")
     choice = input("Do you want to enable/disable SELinux? Type (e/d) or \n Type (exit) to go back: ")
     if choice == 'exit':
         return
     elif choice == 'e':
-        print(os.system("setenforce 1"))
+        print(sp.getoutput("setenforce 1"))
     elif choice == 'd':
-        print(os.system("setenforce 0"))
+        print(sp.getoutput("setenforce 0"))
     else:
         input("wrong choice! try again...")
         selinux()
@@ -27,13 +27,30 @@ def selinux():
 
 
 def firewall():
-    print(os.system("systemctl status firewalld"))
+    print("Status of Firewall: ", end="")
+    status = sp.getoutput("systemctl status firewalld")
+    print(status)
+    print("-----------------------------------------------------------------------------------------")
+    choice = input("Do you want to enable/disable/start/stop/restart Firewall? Type (enable/disable/start/stop/restart) or \n Type (exit) to go back: ")
+    if choice == 'exit':
+        return
+    elif choice == 'enable':
+        print(sp.getoutput("systemctl enable firewalld"))
+    elif choice == 'disable':
+        print(sp.getoutput("systemctl disable firewalld"))
+    elif choice == 'start':
+        print(sp.getoutput("systemctl start firewalld"))
+    elif choice == 'stop':
+        print(sp.getoutput("systemctl stop firewalld"))
+    elif choice == 'restart':
+        print(sp.getoutput("systemctl restart firewalld"))
+    else:
+        input("wrong choice! try again...")
+        firewall()
     return
 
 def linux_menu():
-    try:
-        import os
-        import pyfiglet 
+    try: 
 
         os.system("clear")
         os.system("tput setaf 3")
@@ -55,7 +72,7 @@ def linux_menu():
         print("\t[ 1 ]", end="   ")
         print ("SeLinux")
         print("\t[ 2 ]", end="   ")
-        print ("Firewall Status")
+        print ("Firewall")
         # print("\t[ 3 ]", end="   ")
         # print ("Running Containers")
         # print("\t[ 4 ]", end="   ")
@@ -78,7 +95,7 @@ def linux_menu():
         os.system("tput setaf 7")
 
     except Exception as e:
-        print("Some modules are missing {}".format(e))
+        print("Some exception occured: {}".format(e))
         input("Close Program >>>")
         os.system("reset")
         exit()
@@ -94,9 +111,9 @@ def linux_menu():
             elif val == 2:
                 firewall()
             # elif val == 3:
-            #     print(os.system("docker ps"))
+            #     print(sp.getoutput("docker ps"))
             # elif val == 4:
-            #     print(os.system("docker ps -a"))
+            #     print(sp.getoutput("docker ps -a"))
             # elif val == 5:
             #     # not done yet
             #     print("under process")
@@ -108,7 +125,7 @@ def linux_menu():
             #     print("under process")
             # elif val == 8:
             #     cmd = "docker rm -f $(docker ps -aq)"
-            #     print(os.system(cmd))
+            #     print(sp.getoutput(cmd))
             elif val == 9:
                 return
             else:
